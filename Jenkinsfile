@@ -14,11 +14,20 @@ node('docker') {
     stage('Build') {
         dockerCleanup()
         docker.build(image.id, '--pull --no-cache .')
+        sh "docker tag ${image.id} registry.devshift.net/${image.id}"
+    }
+
+    stage('Test') {
+        dir('tests') {
+            timeout(5) {
+                sh './run_integration_tests.sh'
+            }
+        }
     }
 
     if (env.BRANCH_NAME == 'master') {
         stage('Push Images') {
-            docker.withRegistry('https://push.registry.devshift.net/', 'devshift-registry')
+            docker.withRegistry('https://registry.devshift.net/') {
                 image.push('latest')
                 image.push(commitId)
             }
