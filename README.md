@@ -1,5 +1,3 @@
-CentOS CI test
-
 Fabric8-Analytics Base Docker image for Core library and services
 -------------------------------------------
 
