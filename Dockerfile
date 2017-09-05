@@ -68,10 +68,6 @@ RUN pip3 install -r /tmp/install_deps/py23requirements.txt
 COPY hack/import_RH_CA_cert.sh /tmp/install_deps/
 RUN /tmp/install_deps/import_RH_CA_cert.sh
 
-# A temporary hack to keep tagger up2date
-COPY hack/install_tagger.sh /tmp/
-RUN sh /tmp/install_tagger.sh
-
 # Not-yet-upstream-released patches
 RUN mkdir -p /tmp/install_deps/patches/
 COPY hack/patches/* /tmp/install_deps/patches/
