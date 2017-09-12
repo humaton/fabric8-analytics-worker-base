@@ -49,6 +49,7 @@ DEPENDENCY_CHECK="which"
 # relics of the past, no idea why we used them, can be removed eventually
 UNKNOWN="koji rpmdevtools nodejs-packaging"
 
+
 # Install all RPM deps
 yum install -y --setopt=tsflags=nodocs ${BUILD} ${REQUIREMENTS_TXT} \
                 ${DB_MIGRATIONS} ${PROCESS_PY} \
