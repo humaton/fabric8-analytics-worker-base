@@ -64,9 +64,9 @@ COPY ./hack/py23requirements.txt /tmp/install_deps/
 RUN pip2 install -r /tmp/install_deps/py23requirements.txt
 RUN pip3 install -r /tmp/install_deps/py23requirements.txt
 
-# Import RH CA cert
-COPY hack/import_RH_CA_cert.sh /tmp/install_deps/
-RUN /tmp/install_deps/import_RH_CA_cert.sh
+# Import RH CA cert (not accessible outside RH)
+#COPY hack/import_RH_CA_cert.sh /tmp/install_deps/
+#RUN /tmp/install_deps/import_RH_CA_cert.sh
 
 # Not-yet-upstream-released patches
 RUN mkdir -p /tmp/install_deps/patches/
