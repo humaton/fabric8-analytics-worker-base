@@ -18,3 +18,5 @@ rm -f "${NAME}.zip"
 mv "${NAME}"/* .
 mkdir --mode 775 "data/"
 rm -rf "${NAME:?}/"
+
+mkdir -p $OWASP_DEP_CHECK_SUPPRESS_PATH
