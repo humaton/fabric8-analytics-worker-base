@@ -4,6 +4,7 @@ ENV LANG=en_US.UTF-8 \
     BLACKDUCK_PATH='/opt/blackduck/' \
     JAVANCSS_PATH='/opt/javancss/' \
     OWASP_DEP_CHECK_PATH='/opt/dependency-check/' \
+    OWASP_DEP_CHECK_SUPPRESS_PATH='/opt/dependency-check/suppress/' \
     SCANCODE_PATH='/opt/scancode-toolkit/'
 
 # Cache friendly dependency specifications:
@@ -54,6 +55,7 @@ RUN /tmp/install_deps/install_deps_npm.sh
 # Install OWASP dependency-check cli for security scan of jar files
 COPY hack/install_owasp_dependency-check.sh /tmp/install_deps/
 RUN /tmp/install_deps/install_owasp_dependency-check.sh
+COPY hack/suppress-python-cpe.xml ${OWASP_DEP_CHECK_SUPPRESS_PATH}
 
 # Install ScanCode-toolkit for license scan
 COPY hack/install_scancode.sh /tmp/install_deps/
