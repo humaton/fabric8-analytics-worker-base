@@ -46,6 +46,8 @@ DEPENDENCY_CHECK="which"
 # relics of the past, no idea why we used them, can be removed eventually
 UNKNOWN="koji rpmdevtools nodejs-packaging"
 
+GOLANG_SUPPORT="golang"
+
 
 # Install all RPM deps
 yum install -y --setopt=tsflags=nodocs ${BUILD} ${REQUIREMENTS_TXT} \
@@ -53,4 +55,4 @@ yum install -y --setopt=tsflags=nodocs ${BUILD} ${REQUIREMENTS_TXT} \
                 ${DIGESTER} ${LINGUIST} \
                 ${OSCRYPTOCATCHER} ${CSMOCK_TASK_DEPS} \
                 ${BD_DEPS} ${BREWUTILS} ${MERCATOR} ${CODE_METRICS} \
-                ${DEPENDENCY_CHECK}
+                ${DEPENDENCY_CHECK} ${GOLANG_SUPPORT}

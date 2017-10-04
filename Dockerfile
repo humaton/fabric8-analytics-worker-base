@@ -66,6 +66,9 @@ COPY ./hack/py23requirements.txt /tmp/install_deps/
 RUN pip2 install -r /tmp/install_deps/py23requirements.txt
 RUN pip3 install -r /tmp/install_deps/py23requirements.txt
 
+# Install gofedlib needed for Go support
+RUN pip2 install --egg git+https://github.com/gofed/gofedlib.git@4ca44e4
+
 # Import RH CA cert (not accessible outside RH)
 #COPY hack/import_RH_CA_cert.sh /tmp/install_deps/
 #RUN /tmp/install_deps/import_RH_CA_cert.sh
