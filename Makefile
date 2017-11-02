@@ -20,4 +20,3 @@ get-image-name:
 
 get-image-repository:
 	@echo $(REPOSITORY)
-
