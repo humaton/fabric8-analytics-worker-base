@@ -2,8 +2,6 @@
 
 # Required by Dockerfile or any built-time script in hack/
 BUILD="python34-pip python2-pip wget"
-# relics of the past, no idea why we used them, can be removed eventually
-UNKNOWN_BUILD="libicu-devel gcc-c++ cmake"
 
 # We need postgresql-devel and python3-devel for psycopg2 listed in f8a_worker/requirements.txt
 # We cannot use requests from PyPI since it does not allow us to use own certificates
@@ -42,9 +40,6 @@ MERCATOR="mercator-1-22.el7.centos.x86_64"
 
 # OWASP dependency-check used by CVEcheckerTask
 DEPENDENCY_CHECK="which"
-
-# relics of the past, no idea why we used them, can be removed eventually
-UNKNOWN="koji rpmdevtools nodejs-packaging"
 
 GOLANG_SUPPORT="golang"
 
