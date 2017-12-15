@@ -6,4 +6,8 @@
    <suppress>
       <cpe>cpe:/a:python_software_foundation:python</cpe>
    </suppress>
+   <suppress>
+      <gav regex="true">^io\.vertx:vertx-config-kubernetes-configmap:.*$</gav>
+      <cpe>cpe:/a:kubernetes:kubernetes</cpe>
+   </suppress>
 </suppressions>
