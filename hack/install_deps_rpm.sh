@@ -33,7 +33,7 @@ DIGESTER='ssdeep'
 BREWUTILS="python2-brewutils"
 
 # mercator-go
-MERCATOR="mercator-1-23.el7.centos.x86_64"
+MERCATOR="mercator-1-24.el7.centos.x86_64"
 
 # CodeMetricsTask - it requires python-pip, since we'll be installing mccabe for both Python 2 and 3
 # CODE_METRICS="cloc python-pip"
