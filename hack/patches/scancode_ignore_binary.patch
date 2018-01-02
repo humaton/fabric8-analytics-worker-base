@@ -1,16 +1,30 @@
-# Don't scan binary & media files
-# Ugly, not upstreamable hack
+From e2c26e42d96ed16411fd891d1f804f9940b144f7 Mon Sep 17 00:00:00 2001
+From: Jiri Popelka <jpopelka@redhat.com>
+Date: Mon, 18 Dec 2017 11:46:50 +0100
+Subject: [PATCH] Don't scan binary & media files
 
-diff -up scancode-toolkit-2.0.1/src/scancode/cli.py.ignore-binary scancode-toolkit-2.0.1/src/scancode/cli.py
---- scancode-toolkit-2.0.1/src/scancode/cli.py.ignore-binary	2017-07-03 18:02:17.000000000 +0200
-+++ scancode-toolkit-2.0.1/src/scancode/cli.py	2017-07-27 13:26:07.076096747 +0200
-@@ -621,6 +621,9 @@ def _scanit(paths, scanners, scans_cache
-     infos['path'] = rel_path
-     infos.update(scan_infos(abs_path, diag=diag))
+---
+ src/scancode/cli.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/scancode/cli.py b/src/scancode/cli.py
+index dea4f3e7d..9586cbe00 100644
+--- a/src/scancode/cli.py
++++ b/src/scancode/cli.py
+@@ -827,7 +827,12 @@ def resource_paths(base_path, diag, scans_cache_class, pre_scan_plugins=()):
+         resource = Resource(scans_cache_class, abs_path, base_is_dir, len_base_path)
+         # always fetch infos and cache.
+         resource.put_info(scan_infos(abs_path, diag=diag))
+-        yield resource
++        # This should go into pre-scan plugin, see
++        # https://github.com/nexB/scancode-toolkit/pull/792
++        if resource and not any((resource.infos['is_binary'],
++                                 resource.infos['is_media'],
++                                 resource.infos['size'] > 1000000)):
++            yield resource
  
-+    if any((infos['is_binary'], infos['is_media'], infos['size'] > 1000000)):
-+        return True, rel_path
-+
-     success = True
-     scans_cache = scans_cache_class()
-     is_cached = scans_cache.put_info(rel_path, infos)
+ 
+ def scan_infos(input_file, diag=False):
+-- 
+2.13.6
+

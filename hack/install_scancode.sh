@@ -1,7 +1,7 @@
 #!/usr/bin/sh -ex
 
 # sanity check
-if [ ! $SCANCODE_PATH ]; then
+if [ ! "${SCANCODE_PATH}" ]; then
     echo "SCANCODE_PATH not set"
     exit 1
 fi
@@ -11,9 +11,9 @@ fi
 #git clone --depth 1 https://github.com/nexB/scancode-toolkit.git
 #cd scancode-toolkit
 
-RELEASE='2.0.1'
-mkdir -p $SCANCODE_PATH
-cd ${SCANCODE_PATH}
+RELEASE='2.2.1'
+mkdir -p "${SCANCODE_PATH}"
+cd "${SCANCODE_PATH}"
 wget -q "https://github.com/nexB/scancode-toolkit/releases/download/v${RELEASE}/scancode-toolkit-${RELEASE}.zip" -O "scancode-toolkit.zip"
 unzip -q "scancode-toolkit.zip"
 rm -f "scancode-toolkit.zip"
