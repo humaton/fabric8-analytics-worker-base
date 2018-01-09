@@ -29,9 +29,6 @@ DIGESTER='ssdeep'
 # blackduck
 # BD_DEPS="openssl which java"
 
-# there's no python3 version of brew utils yet
-BREWUTILS="python2-brewutils"
-
 # mercator-go
 MERCATOR="mercator-1-24.el7.centos.x86_64"
 
