@@ -14,9 +14,8 @@ ENV LANG=en_US.UTF-8 \
 RUN mkdir -p /tmp/install_deps
 
 # https://copr.fedorainfracloud.org/coprs/jpopelka/mercator/
-# https://copr.fedorainfracloud.org/coprs/jpopelka/python-brewutils/
 # https://copr.fedorainfracloud.org/coprs/fche/pcp/
-COPY hack/_copr_jpopelka-mercator.repo hack/_copr_jpopelka-python-brewutils.repo hack/_copr_fche_pcp.repo /etc/yum.repos.d/
+COPY hack/_copr_jpopelka-mercator.repo hack/_copr_fche_pcp.repo /etc/yum.repos.d/
 
 # Install RPM dependencies
 COPY hack/install_deps_rpm.sh /tmp/install_deps/
@@ -74,10 +73,6 @@ RUN pip2 install --egg git+https://github.com/gofed/gofedlib.git@18e0ce72d2c7bcb
 RUN mkdir -p /etc/pcp /var/run/pcp /var/lib/pcp /var/log/pcp  && \
     chgrp -R root /etc/pcp /var/run/pcp /var/lib/pcp /var/log/pcp && \
     chmod -R g+rwX /etc/pcp /var/run/pcp /var/lib/pcp /var/log/pcp
-
-# Import RH CA cert (not accessible outside RH)
-#COPY hack/import_RH_CA_cert.sh /tmp/install_deps/
-#RUN /tmp/install_deps/import_RH_CA_cert.sh
 
 # Not-yet-upstream-released patches
 RUN mkdir -p /tmp/install_deps/patches/

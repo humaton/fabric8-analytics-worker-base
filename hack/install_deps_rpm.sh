@@ -6,7 +6,7 @@ BUILD="python34-pip python2-pip wget"
 # We need postgresql-devel and python3-devel for psycopg2 listed in f8a_worker/requirements.txt
 # We cannot use requests from PyPI since it does not allow us to use own certificates
 # python3-pycurl is needed for Amazon SQS (boto lib), we need Fedora's rpm - installing it from pip results in NSS errors
-REQUIREMENTS_TXT='postgresql-devel python34-devel libxml2-devel libxslt-devel python34-requests python34-pycurl'
+REQUIREMENTS_TXT='postgresql-devel python34-devel libxml2-devel libxslt-devel python34-requests python34-pycurl patch'
 
 # hack/run-db-migrations.sh
 DB_MIGRATIONS='postgresql'
@@ -28,9 +28,6 @@ DIGESTER='ssdeep'
 
 # blackduck
 # BD_DEPS="openssl which java"
-
-# there's no python3 version of brew utils yet
-BREWUTILS="python2-brewutils"
 
 # mercator-go
 MERCATOR="mercator-1-24.el7.centos.x86_64"
