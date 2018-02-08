@@ -26,9 +26,6 @@ DIGESTER='ssdeep'
 # covscan
 # CSMOCK_TASK_DEPS="csmock"
 
-# blackduck
-# BD_DEPS="openssl which java"
-
 # mercator-go
 MERCATOR="mercator-1-24.el7.centos.x86_64"
 
