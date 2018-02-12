@@ -1,7 +1,6 @@
 FROM registry.centos.org/centos/centos:7
 
 ENV LANG=en_US.UTF-8 \
-    BLACKDUCK_PATH='/opt/blackduck/' \
     JAVANCSS_PATH='/opt/javancss/' \
     OWASP_DEP_CHECK_PATH='/opt/dependency-check/' \
     OWASP_DEP_CHECK_SUPPRESS_PATH='/opt/dependency-check/suppress/' \
@@ -40,13 +39,6 @@ RUN /tmp/install_deps/install_deps_npm.sh
 
 # Languages scanner
 # RUN gem install --no-document github-linguist
-
-# Install BlackDuck CLI
-#COPY hack/install_bd.sh /tmp/install_deps/
-#RUN /tmp/install_deps/install_bd.sh
-# Import BlackDuck Hub CA cert
-#COPY hack/import_BD_CA_cert.sh /tmp/install_deps/
-#RUN /tmp/install_deps/import_BD_CA_cert.sh
 
 # Install JavaNCSS for code metrics
 #COPY hack/install_javancss.sh /tmp/install_deps/
