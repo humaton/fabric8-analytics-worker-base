@@ -7,12 +7,6 @@ ENV LANG=en_US.UTF-8 \
     OWASP_DEP_CHECK_SUPPRESS_PATH='/opt/dependency-check/suppress/' \
     SCANCODE_PATH='/opt/scancode-toolkit/'
 
-# Cache friendly dependency specifications:
-#   - deps are listed in text files or scripts inside the lib/ dir
-#   - individual files are copied in during image build
-#   - changes in minimum and/or pinned versions will invalidate the cache
-RUN mkdir -p /tmp/install_deps
-
 # https://copr.fedorainfracloud.org/coprs/jpopelka/mercator/
 # https://copr.fedorainfracloud.org/coprs/fche/pcp/
 COPY hack/_copr_jpopelka-mercator.repo hack/_copr_fche_pcp.repo /etc/yum.repos.d/
@@ -75,7 +69,6 @@ RUN mkdir -p /etc/pcp /var/run/pcp /var/lib/pcp /var/log/pcp  && \
     chmod -R g+rwX /etc/pcp /var/run/pcp /var/lib/pcp /var/log/pcp
 
 # Not-yet-upstream-released patches
-RUN mkdir -p /tmp/install_deps/patches/
 COPY hack/patches/* /tmp/install_deps/patches/
 # Apply patches here to be able to patch selinon as well
 RUN /tmp/install_deps/patches/apply_patches.sh
