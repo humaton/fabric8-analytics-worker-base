@@ -25,7 +25,7 @@ RUN yum install -y epel-release && \
 # Work-arounds & hacks:
 # 'pip install --upgrade wheel': http://stackoverflow.com/questions/14296531
 RUN pip3 install --upgrade pip && pip install --upgrade wheel && \
-    pip3 install alembic psycopg2 git+git://github.com/msrb/kombu@sqs-conn#egg=kombu
+    pip3 install alembic psycopg2
 
 # Install javascript deps
 COPY hack/install_deps_npm.sh /tmp/install_deps/
