@@ -18,7 +18,7 @@ RUN yum install -y epel-release && \
 
 # Work-arounds & hacks:
 # 'pip install --upgrade wheel': http://stackoverflow.com/questions/14296531
-RUN pip3 install --upgrade pip && pip install --upgrade wheel && \
+RUN pip3 install --upgrade 'pip>=10.0.0' && pip install --upgrade wheel && \
     pip3 install alembic psycopg2
 
 # Install javascript deps
