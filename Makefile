@@ -1,15 +1,10 @@
 ifeq ($(TARGET), rhel)
     DOCKERFILE := Dockerfile.rhel
-
-    ifndef DOCKER_REGISTRY
-        $(error DOCKER_REGISTRY is not set)
-    endif
-
-    REGISTRY := $(DOCKER_REGISTRY)
 else
     DOCKERFILE := Dockerfile
-    REGISTRY?=registry.devshift.net
 endif
+
+REGISTRY?=registry.devshift.net
 REPOSITORY?=fabric8-analytics/f8a-worker-base
 DEFAULT_TAG=latest
 
