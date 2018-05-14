@@ -11,7 +11,7 @@ fi
 #git clone --depth 1 https://github.com/nexB/scancode-toolkit.git
 #cd scancode-toolkit
 
-RELEASE='2.2.1'
+RELEASE='2.9.2'
 mkdir -p "${SCANCODE_PATH}"
 cd "${SCANCODE_PATH}"
 wget -q "https://github.com/nexB/scancode-toolkit/releases/download/v${RELEASE}/scancode-toolkit-${RELEASE}.zip" -O "scancode-toolkit.zip"
